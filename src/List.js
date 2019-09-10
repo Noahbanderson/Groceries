@@ -31,7 +31,6 @@ const List = ({items, title, todoClick, editClick, deleteClick }) => {
   )
 }
 
-
 export default List;
 
 

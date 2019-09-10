@@ -3,7 +3,6 @@ import React from "react";
 class Itemform extends React.Component {
   state={name:""}
 
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addItem(this.state.name)

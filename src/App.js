@@ -40,16 +40,26 @@ class App extends React.Component {
   };
 
   editClick = (id) => { 
-    // debugger
+    const item = this.state.items.find( i => i.id === id)    
+    const newitemname = prompt("How would you like to edit this?", item.iname );
+    this.setState({
+      items: this.state.items.map( item => {
+          if (item.id === id) {
+            return {
+              ...item, 
+              iname: newitemname
+            }
+          }
+          return item
+        }
+      )
+    })
   };
-
 
   deleteClick = (id) => {
     const result = this.state.items.filter(item => item.id !== id )
     this.setState({items: result})
   };
-
-
 
   render() {
     return (
@@ -69,10 +79,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-
-    // addItem
-    // const {items} = this.state
-    // const item = {iname: name, id: this.getUniqId(), retrieved: false}
-    // this.setState({items: item, ...items})
-
