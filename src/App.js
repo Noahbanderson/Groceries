@@ -25,7 +25,6 @@ class App extends React.Component {
   }
 
   handleClick = (id) => {
-    
     this.setState({
       items: this.state.items.map( item => {
           if (item.id === id) {
@@ -38,7 +37,17 @@ class App extends React.Component {
         }
       )
     })
-  }
+  };
+
+  editClick = (id) => { 
+    // debugger
+  };
+
+
+  deleteClick = (id) => {
+    const result = this.state.items.filter(item => item.id !== id )
+    this.setState({items: result})
+  };
 
 
 
@@ -46,7 +55,13 @@ class App extends React.Component {
     return (
       <div>
         <Itemform addItem={this.addItem}/>
-        <List items={this.state.items} title="Grocery List" todoClick={this.handleClick}/>
+        <List 
+          items={this.state.items} 
+          title="Grocery List" 
+          todoClick={this.handleClick}
+          editClick={this.editClick}
+          deleteClick={this.deleteClick}
+        />
       </div>
     )
   }
